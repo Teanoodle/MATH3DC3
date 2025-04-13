@@ -1,0 +1,88 @@
+################################################################
+#way to fool XPP into cobwebbing f(x) 
+# first  define a function that every other step evaluates the map
+# -- in the alternate steps, it just keeps the same
+# value so that it alternates between horizontal and vertical jumps
+# using  the function mod(2,n) which when n=2
+#
+#   mod(t,2) = 0    if t is even
+#            = 1    if t is odd 
+#
+#Then, define the function g(x,y)
+#   g(x,y) = y      if t is odd
+#          = f(x)   if t is even
+#
+g(x,y)=if(mod(t,2)<.5)then(f(x))else(y)
+################################################################
+# note that 't' is the iteration number 0,1,2,...
+# if t is even evaluate f otherwise keep the old y
+#  that is now define the 2-D map that returns the points
+#  (x(t),y(t)) that make up the cobweb,
+#  #
+y(t+1)=g(x,y)
+x(t+1)=if(t==0)then(x)else(y)
+#
+###################################################################
+# Now we define the function f(x) for the 1-D map that we iterate
+#    and the initial conditions.
+
+
+# functions to try
+f(x)=c*x-x^2
+
+par c=2
+
+# always start y=0
+init y=0,x=0
+#
+#
+###############################################################
+# Here we define some variables used to plot the lines y=x
+# and the curve y=f(x) on the same graph for the cobwebbing.
+#
+# the larger nit gives a smoother curve, but nit must equal total
+#  the total number of iterations of the map
+#  
+par xlo=-1.5,xhi=2,nit=2000
+xx=xlo+(xhi-xlo)*t/nit
+# always start y=0
+#
+## if you wish to plot iterates of the map
+aux map=f(xx)
+aux st=xx
+## and if you want to plot higher iterates of the function f(x)
+aux map2=f(f(xx))
+# aux map3=f(f(f(xx)))
+#aux map4=f(f(f(f(xx))))
+#
+################################################### 
+# in silent mode when you only want to output y and st
+#only  y,st
+# some convenient settings for the graphics
+@ xlo=-1.5,ylo=-1.5,xhi=2,yhi=3
+# Sets the axes as horizontal x and vertical y and plots the iterates
+@ xp=x,yp=y
+@ nplot=3
+# add the plots y=x and y=f(x) 
+@ xp2=st,yp2=st
+@ xp3=st,yp3=map
+#  if you increase nplot you can also plot higher iterates 
+#  i.e., the 2nd, 3rd, or 4th iterate
+@ xp4=st,yp4=map2
+#@ xp4=st,yp4=map3
+#@ xp5=st,yp5=map4
+#
+########################################################
+#
+# tell xpp that it is a discrete map and iterate nit=total times
+@ meth=discrete,total=2000,bounds=10e10
+#@ output=file1.dat
+#
+# All xppaut code must end with "done" or "d" to
+# tell its compiler where the end of the code is.
+#
+done
+#
+#######################################
+
+

@@ -1,0 +1,23 @@
+par xl=0,xh=1
+
+h(x)=if(x<0.5)then(2*x)else(2-2*x)
+f(x)=if(x<0.5)then(2*x)else(if(x<1)then(2*x-1)else(0))
+g(x)=x
+
+s'=1
+x_=xl+s*(xh-xl)
+
+aux y_1=h(x_)
+aux y_2=f(x_)
+aux y_3=f(h(x_))
+aux y_4=g(x_)
+aux y_5=f(h(f(h(x_))))
+aux x=x_
+
+@ maxstor=100000,xlo=0,ylo=0,xhi=1,yhi=1
+@ xp=x,yp=y,total=1.001,dt=.001
+@ nplot=2
+@ xp=x, yp=y_3
+@ xp=x, yp=y_4
+
+done

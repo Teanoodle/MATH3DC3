@@ -1,0 +1,10 @@
+f(x)=x^2+c
+x(t+1)=f(x)
+c(t+1)=c
+init x=0.1
+init c=-2
+@ maxstor 10000000,total=1000,trans=400,meth=discrete
+@ xlo=-2,xhi=.3,ylo=-2,yhi=2,xp=c,yp=x
+@ rangeover=c,rangestep=200,rangelow=-2.2,rangehigh=1.1,rangeoldic=yes
+@ rangereset=no,lt=0
+done

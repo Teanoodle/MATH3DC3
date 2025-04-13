@@ -1,0 +1,20 @@
+
+#filled_julia.ode  
+#drawing the filled Julia set
+#
+par cx=0.360284,cy=.100376
+dx/dt=if(t<=0)then(u^2-v^2+cx)else(x^2-y^2+cx) 
+dy/dt=if(t<=0)then(2*u*v+cy)else(2*x*y+cy)
+du/dt=u
+dv/dt=v
+
+#
+# if this crosses 0 we are out of the set
+aux amp=x^2+y^2-max(4,cx^2+cy^2)
+#
+@ xp=u,yp=v 
+@ maxstor=40000000,meth=discrete 
+@ xlo=-1.2,xhi=1.2,ylo=-1.2,yhi=1.2,lt=0
+@ rangeover=u,rangereset=no,rangelow=-1.2,rangehigh=1.2,rangestep=400
+@ poimap=section,poivar=amp,poipln=0,poisgn=1,poistop=1
+done

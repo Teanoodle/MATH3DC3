@@ -1,0 +1,19 @@
+#iterate_map.ode
+
+#The map
+f(x)=c*x-x^2
+x(t+1)=f(x)
+
+# parameter that can be changed
+par c=2
+
+#initial condition (can be changed)
+init x=0.1
+
+@ maxstor 10000000,total=20,meth=discrete
+@ bounds=10e10
+@ xlo=0,xhi=20,ylo=0,yhi=2,xp=t,yp=x
+
+# If you want discrete points instead of joining the points 
+@ lt=0
+don

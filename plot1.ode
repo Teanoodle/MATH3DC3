@@ -1,0 +1,24 @@
+# file plot1.ode
+# plot f(x)
+
+# Declare the parameters
+par xl=-2,xh=2,a=1
+
+# Defining certain numbers
+#numbers q=1,r=2
+
+f(x)=a*x*(1-x^2)
+s'=1
+x_=xl+s*(xh-xl)
+
+# Defining auxiliary variables (i.e. variable that can be plotted)
+aux y=f(x_)
+aux x=x_
+
+# Setting options  (not necessary)
+
+@ maxstor=100000,xlo=-2,ylo=-4,xhi=2,yhi=4
+@ xp=x,yp=y,total=1.001,dt=.01
+
+#Tell xpp we are finished
+done

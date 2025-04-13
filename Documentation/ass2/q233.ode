@@ -1,0 +1,9 @@
+x(t+1)=c*x-x^3
+par c=0
+init x=0
+@ total=200,method=discrete,nout=2
+@ autoxmin=-2,autoxmax=3.5,autoymin=-2,autoymax=3.5
+@ dsmax=0.05,dsmin=.00001,parmin=-2,parmax=3.5
+@ maxstor 10000000,
+@ xlo=-2,xhi=3.5,ylo=-2,yhi=3.5,xp=t,yp=x
+done

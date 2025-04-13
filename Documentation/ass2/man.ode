@@ -1,0 +1,16 @@
+par xl=-2,xh=2,c=1
+s'=1
+f(x)=c*x-x^3
+x_=xl+s*(xh-xl)
+aux y=f(x_)
+aux yy=f(f(x_))
+aux x=x_
+
+
+@ maxstor=100000,xlo=-2,ylo=-2,xhi=2,yhi=2
+@ xp=x,yp=y,total=1.001,dt=.01
+@ nplot=3
+@ xp2=x,yp2=x
+@ xp3=x,yp3=yy
+
+done

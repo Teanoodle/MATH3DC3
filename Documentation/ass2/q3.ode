@@ -1,0 +1,11 @@
+f(x)=c*cos(x)
+
+x(t+1)=f(x)
+c(t+1)=c
+init x=-7
+init c=-3.5
+@ maxstor 10000000,total=500,trans=400,meth=discrete
+@ xlo=-3.5,xhi=4,ylo=-7,yhi=7,xp=c,yp=x
+@ rangeover=c,rangestep=200,rangelow=-3.5,rangehigh=4,rangeoldic=yes
+@ rangereset=no,lt=0
+done

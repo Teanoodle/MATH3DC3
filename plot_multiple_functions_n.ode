@@ -1,0 +1,34 @@
+# file plot_multiple_functions.ode
+# plot y=f(x), y= f(f(x)), y=x
+
+# Declare the parameters
+par xl=0,xh=1,a=1,p=2
+
+# Defining certain numbers
+#numbers q=1,r=2
+
+#System of ODEs, here s' means ds/dx
+s'=1
+
+#define functions  variables and parameters  in ODE
+#cannot be plotted but can be used in defining auxiliary variables
+#that can be plotted
+f(x)=a*x+x^3
+x_=xl+s*(xh-xl)
+ff(x,p)=if(p<=0)then(x)else(ff(f(x),p-1))
+# Defining auxiliary variables (i.e. variable that can be plotted)
+aux y=f(x_)
+#aux yy=f(f(x_))
+aux yy=ff(x_,p)
+aux x=x_
+
+# Setting options  (not necessary)
+
+@ maxstor=100000,xlo=0,ylo=0,xhi=1,yhi=2
+@ xp=x,yp=y,total=1.001,dt=.01
+@ nplot=3
+@ xp2=x,yp2=x
+@ xp3=x,yp3=yy
+
+#Tell xpp we are finished
+done

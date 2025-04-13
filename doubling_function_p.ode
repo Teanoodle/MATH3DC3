@@ -1,0 +1,30 @@
+# file doubling_function_p.ode for initial conditions in [0,1]
+# plot f(x) = 2x mod 1,  x in [0,1] the doubling function and its pth iterates ff(x,p), p=1,2,3,... 
+
+# Declare the parameters
+par xlo=0,xhi=1,p=1,a=3.5
+
+# Defining certain numbers
+#numbers q=1,r=2
+
+g(x)=if(x<0.5)then(2*x)else(2*x-1)
+f(x)=if(x<1)then(g(x))else(0)
+ff(x,p)=if(p<=0)then(x)else(ff(f(x),p-1))
+#f(x)=a*x*(1-x)
+s'=1
+x_=xlo+s*(xhi-xlo)
+
+# Defining auxiliary variables (i.e. variable that can be plotted)
+aux  y_1=f(x_)
+aux y_it=ff(x_,p)
+aux x=x_
+
+# Setting options  (not necessary)
+
+@ maxstor=100000,xlo=0,ylo=0,xhi=1,yhi=1
+@ xp=x,yp=y,total=1.0001,dt=.001
+@ nplot=2
+@ xp=x,yp=y_1
+@ xp2=x,yp2=y_it
+#Tell xpp we are finished
+done

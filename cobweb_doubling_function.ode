@@ -1,0 +1,42 @@
+# way to fool XPP into cobwebbing f(x) the doubling function 
+# first  define a function that every other step evaluates
+# the map -- in the alternate steps, it just keeps the same
+# value so that it alternates between horizontal and vertical
+# jumps
+g(x,y)=if(mod(t,2)<.5)then(f(x))else(y)
+# note that 't' is the iteration number 0,1,2,...
+# if t is even evaluate f otherwise keep the old y
+y(t+1)=g(x,y)
+x(t+1)=if(t==0)then(x)else(y)
+# note that x(t+2)=f(x(t)) so every other point is the map!
+# Here f(x) is the doubling function
+f(x)=if(x<0.5)then(2*x)else(2*x-1)
+par xstart=0,xend=1,nit=1000
+# Note 0 is a fixe point so n orbit wll appear unless you change x=0
+init y=0,x=0
+xx=xstart+(xend-xstart)*t/nit
+# always start y=0
+#
+aux map=f(xx)
+aux map2=f(f(xx))
+aux map4=f(f(f(f(xx))))
+aux st=xx
+# some convenient settings for the graphics
+@ xlo=0,ylo=0,xhi=1.001,yhi=1.001
+#graph the iterates of the map
+@ xp=x,yp=y
+# nplot= 3 means plot the next to gaphs as well
+@ nplot=4
+# add line y=x 
+@ xp2=st,yp2=st
+# add the graph of the y=f(x), the map
+@ xp3=st,yp3=map
+# add graph    y=f(f(x)) if nplot were 4
+@ xp4=st,yp4=map2
+#@ xp3=st,yp3=map4
+# tell xpp that it is discrete and iterate 100 times
+@ meth=discrete,total=1000
+done
+
+
+

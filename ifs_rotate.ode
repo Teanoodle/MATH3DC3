@@ -1,0 +1,15 @@
+#ifs_rotate.ode
+#drawing the its_rotate triangle
+#
+par beta1=.5,beta2=.5,an=3.141592654,ad=4
+par c0=0,c1=1,c2=0
+par d0=0,d1=0,d2=1
+p=flr(ran(1)*3)
+dx/dt=beta1*(cos(an/ad)*(x-shift(c0,p))-sin(an/ad)*(y-shift(d0,p)))+shift(c0,p)
+dy/dt=beta2*(sin(an/ad)*(x-shift(c0,p))+cos(an/ad)*(y-shift(d0,p)))+shift(d0,p)
+@ xp=x,yp=y
+@ maxstor=20000000,total=20000,meth=discrete
+@ xlo=0,xhi=1,ylo=0,yhi=1,lt=0
+@ xp=x,yp=y
+aux pp=p
+done

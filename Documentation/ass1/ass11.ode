@@ -1,0 +1,27 @@
+
+
+h(x)=if(x<0.5)then(2*x)else(2-2*x)
+f(x)=if(x<0.5)then(2*x)else(if(x<1)then(2*x-1)else(0))
+
+g(x,y)=if(mod(t,2)<.5)then(f(h(x)))else(y)
+
+y(t+1)=g(x,y)
+x(t+1)=if(t==0)then(x)else(y)
+
+init y=0,x=0
+
+par xlo=0,xhi=1.001,nit=2000
+xx=xlo+(xhi-xlo)*t/nit
+
+aux map=f(h(xx))
+aux st=xx
+
+
+@ xlo=0,ylo=0,xhi=1.001,yhi=1.001
+@ xp=x,yp=y
+@ nplot=3
+@ xp2=st,yp2=st
+@ xp3=st,yp3=map
+@ meth=discrete,total=2000
+
+done

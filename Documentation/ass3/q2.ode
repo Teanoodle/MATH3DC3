@@ -1,0 +1,26 @@
+f(x)=c*cos(x)
+h(x)=f(f(f(x)))
+g(x,y)=if(mod(t,2)<.5)then(h(x))else(y)
+
+y(t+1)=h(x)
+x(t+1)=if(t==0)then(0)else(y)
+
+init y=0,x=0
+
+par c=2.4
+
+
+par xlo=-6,xhi=6,nit=100
+xx=xlo+(xhi-xlo)*t/nit
+
+aux map=h(xx)
+aux st=xx
+
+@ xlo=-6,ylo=-7,xhi=6,yhi=7
+@ xp=x,yp=y
+@ nplot=3
+@ xp2=st,yp2=st
+@ xp3=st,yp3=map
+@ meth=discrete,total=100
+
+done

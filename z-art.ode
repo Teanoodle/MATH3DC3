@@ -1,0 +1,42 @@
+#art_fractal.ode
+par  a=1,s3=3,s4=4,s5=5,s6=6
+## diamonds
+par c0=0,c1=1,c2=0,c3=1,c4=.5
+par d0=0,d1=0,d2=1,d3=1,d4=.5
+# triangles
+par g0=0,g1=0,g2=.5
+par h0=0,h1=.5,h2=.5
+# hexagons
+par a0=0.25,a1=.25,a2=.75,a3=.75,a4=0,a5=1
+par b0=0,b1=1,b2=0,b3=1,b4=.5,b5=.5
+
+
+init x=.1,y=.1
+#ps3=flr(ran(1)*s3)
+#ps4=flr(ran(1)*s4) 
+#ps5=flr(ran(1)*s5) 
+#ps6=flr(ran(1)*s6) 
+#could instead do this in one line
+ps[3..6] =flr(ran(1)*s[j])
+# (a=1 diamonds)  (a=2 Sierpinski triangles)  (a=3 hexagons)
+x1=if(a==1)then((1/3)*x+(2/3)*shift(c0,ps5))else(1)
+x2=if(a==2)then(.5*x+.5*shift(g0,ps3))else(x1)
+dx/dt=if(x2 != 1)then(x2)else((1/3)*(x-shift(a0,ps6))+shift(a0,ps6)) 
+
+
+y1=if(a==1)then((1/3)*y+(2/3)*shift(d0,ps5))else(1)
+y2=if(a==2)then(.5*y+.5*shift(h0,ps3))else(y1)
+dy/dt=if(y2 != 1)then(y2)else((1/3)*(y-shift(b0,ps6))+shift(b0,ps6)) 
+
+#dy/dt=if(a==1)then((1/3)*(y-shift(d0,ps1))+shift(d0,ps1))else(.5*y+.5*shift(h0,ps2))
+
+
+
+@ xp=cx,yp=cy
+@ maxstor=20000000,total=20000,meth=discrete
+@ xlo=0,xhi=1,ylo=0,yhi=1,lt=0
+@ xp=x,yp=y
+aux pps[3..6]=ps[j]
+aux xx2=x2
+aux xx1=x1
+done

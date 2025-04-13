@@ -1,0 +1,10 @@
+f(x)=c*x-x^3
+x(t+1)=f(x)
+c(t+1)=c
+init x=0.1
+init c=-1
+@ maxstor 10000000,total=1000,trans=400,meth=discrete
+@ xlo=-2,xhi=4,ylo=-1.5,yhi=3,xp=c,yp=x
+@ rangeover=c,rangestep=200,rangelow=-2,rangehigh=4,rangeoldic=yes
+@ rangereset=no,lt=0
+done

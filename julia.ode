@@ -1,0 +1,16 @@
+#julia.ode
+#drawing Julia sets
+#
+#par cx=-1,cy=0
+par cx=-1.4,cy=0
+r=sqrt(sqrt((x-cx)^2+(y-cy)^2))
+th=atan2(y-cy,x-cx)/2
+s=sign(ran(1)-.5)
+init x=.1
+dx/dt=s*r*cos(th)
+dy/dt=s*r*sin(th)
+@ xp=x,yp=y
+@ maxstor=20000000,total=10000,meth=discrete,trans=100
+@ xlo=-2,xhi=2,ylo=-2,yhi=2,lt=0
+@ xp=x,yp=y
+done
